@@ -1,7 +1,6 @@
 <html>
   <head>
     <link rel="stylesheet" href="./css/popup.css" type="MIME" media="screen" charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/vanilla-semantic-ui@0.0.1/dist/vanilla-semantic.min.css">
   </head>
   <body>
     <div id="popup-container">
@@ -10,13 +9,18 @@
           Noogle
         </h1>
       </div>
-      <div id="textfield-container">
+      <div id="form-container">
+        <form class="form">
+          <textarea name="" rows="8" cols="80" value=""></textarea>
+          <input id="save-btn" type="submit" name="" value="SAVE">
+        </form>
       </div>
-
       <div id="folder-container">
-        <div id="tabs-container">
-        </div>
+          <ul id="tabs-list">
+          </ul>
         <div id="notes-container">
+          <ul id="notes-list">
+          </ul>
         </div>
       </div>
 
