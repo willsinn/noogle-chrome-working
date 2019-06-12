@@ -1,4 +1,7 @@
+
+
 export default function(){
+  console.log('%c <-- popup/notes loaded --> ', 'background: #222; color: green');
 var taskInput = document.getElementById("new-task"); // new-task
 var addButton = document.getElementsByTagName("button")[0]; //first button
 var incompleteTasksHolder = document.getElementById("incomplete-tasks"); //incomplete-tasks
