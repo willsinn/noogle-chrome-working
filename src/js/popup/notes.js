@@ -1,12 +1,18 @@
 const usersURL = "http://localhost:3000/users/"
 const grab = (selectorStr, parent = document) =>  parent.querySelector(selectorStr)
 
-
 const userId = 1;
 const name = grab("#name")
+
 const userFolderContainer = grab("#user-folder-container")
 const userFolders = grab("#user-folders")
 const folderNotesList = grab("#folder-notes-list")
+
+const saveContainer = grab("#save-container")
+const selectFolderOptions = grab("#select-folder-options")
+const addNoteForm = grab("#add-note-form")
+const textareaContainer = grab("#textarea-container")
+
 
 
 export default function(){
@@ -19,26 +25,30 @@ export default function(){
       userFolders.innerHTML+=`
         <li id="folder-tab-${folder.id}">
           <div>${folder.name}</div>
-        </li>
-        `
-        //append tabs
+        </li>`
+      selectFolderOptions.innerHTML+=`
+        <option value="option-${folder.id}">
+          ${folder.name}
+        </option>`
       })
-    const startingFolder = user.folders[0].notes
+    //append tabs
+
     //append first folder's notes into space to start
-    startingFolder.forEach(note => {
+    const startNotes = user.folders[0].notes
+    startNotes.forEach(note => {
       folderNotesList.innerHTML=`
         <li id="folder-note-${note.id}">
           <span>${note.note}</span>
           <span>${note.url}</span>
-        </li>
-        `
-    })
-    userFolders.addEventListener('click', event => {
-      let targetId = event.target.parentElement.id
+        </li>`
+      })
+
+//toggles notes by tab clicked
+    userFolders.addEventListener('click', e => {
+      let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
       const targetIdx = parseInt(targetId)-1
-      const targetFolder = user.folders[targetIdx].notes
-      targetFolder.forEach(note => {
+      user.folders[targetIdx].notes.forEach(note => {
         folderNotesList.innerHTML=`
           <li id="folder-note-${note.id}">
             <span>${note.note}</span>
@@ -48,7 +58,11 @@ export default function(){
       })
     })
   })
-
+  saveContainer.addEventListener("submit", e => {
+    const noteInput = textareaContainer.innerTEXT
+    console.log(e.target);
+    debugger
+  })
   //on tabClick switch notes
 
 
