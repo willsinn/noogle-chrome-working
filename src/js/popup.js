@@ -1,14 +1,13 @@
 import "../css/popup.css";
-import render from "./popup/notes"
-import windowId from "./background"
-
+import renderNotes from "./popup/notes"
 
 document.addEventListener("DOMContentLoaded", event => {
-  console.log(event);
+  console.log('%c <-- popup.js --> ', 'background: #222; color: green', event);
   const open = event.target.webkitVisibilityState
   if (open === "visible") {
-    render();
+    renderNotes();
   } else {
-    return function(){console.log("hi")}
+    return
+    console.log("add fetch data, into conditional here")
   }
 })
