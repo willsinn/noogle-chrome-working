@@ -1,17 +1,21 @@
 /* Basic Style */
 #popup-container {
-},
+}
 #title-container {
-},
-#form-container {
-},
+}
+#textarea-container {
+}
 #save-btn {
-},
-#folder-container {
-},
-#tabs-list {
-},
-#notes-list {
-},
+}
+#user-folder-container {
+}
+#user-folders {
+}
+#notes-container {
+}
+#folder-options{
+}
+#folder-notes-list {
+}
 #save-container {
 }
