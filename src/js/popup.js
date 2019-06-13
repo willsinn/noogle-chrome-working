@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", event => {
   if (open === "visible") {
     renderNotes()
   }
-  console.log("add fetch data, into conditional here")
 })
 
 // chrome.app.window.current().onClosed.addListener(event => {console.log()})

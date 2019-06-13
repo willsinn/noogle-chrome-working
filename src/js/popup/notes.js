@@ -1,7 +1,10 @@
-const usersURL = "http://localhost:3000/users/"
 const grab = (selectorStr, parent = document) =>  parent.querySelector(selectorStr)
+const usersURL=`http://localhost:3000/users/`;
+const notesURL="http://localhost:3000/notes";
 
 const userId = 1;
+
+
 const name = grab("#name")
 
 const userFolderContainer = grab("#user-folder-container")
@@ -47,7 +50,7 @@ export default function(){
     userFolders.addEventListener('click', e => {
       let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
-      const targetIdx = parseInt(targetId)-1
+      let targetIdx = parseInt(targetId)-1
       user.folders[targetIdx].notes.forEach(note => {
         folderNotesList.innerHTML=`
           <li id="folder-note-${note.id}">
@@ -58,12 +61,23 @@ export default function(){
       })
     })
   })
+
   saveContainer.addEventListener("submit", e => {
-    const noteInput = textareaContainer.innerTEXT
-    console.log(e.target);
-    debugger
+    e.preventDefault();
+    let input = event.target.parentNode.parentElement.firstElementChild.childNodes[1]
+    let inputFolder = event.target.firstElementChild.value.split("-")[1]
+    let folderId = parseInt(inputFolder)
+
+    
+    fetch(notesURL, {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({})
+    })
+    addNoteForm.reset()
   })
   //on tabClick switch notes
-
-
 }

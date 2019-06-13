@@ -4,33 +4,31 @@
   <head>
     <link rel="stylesheet" type="text/css/html" href="./css/popup.css" media="screen" charset="utf-8">
   </head>
-  <body>
+<body>
+  <div id="root">
+    <div id="title-container">
+      <h1 class="title">
+        Noogle
+      </h1>
+      <h2 id="name"></h2>
+    </div>
     <div id="popup-container">
-      <div id="title-container">
-        <h1 class="title">
-          Noogle
-        </h1>
-        <h2 id="name"></h2>
-      </div>
       <div id="textarea-container">
-          <textarea name="" rows="8" cols="80" value=""></textarea>
+        <textarea rows="8" cols="80"></textarea>
       </div>
-
       <div id="user-folder-container">
-          <ul id="user-folders"></ul>
-          <div id="notes-container">
-            <ul id="folder-notes-list"></ul>
-          </div>
+        <ul id="user-folders"></ul>
+        <div id="notes-container">
+          <ul id="folder-notes-list"></ul>
+        </div>
       </div>
-
       <div id="save-container">
         <form id="add-note-form">
-          <select id="select-folder-options">
-          </select>
-          <input id="save-btn" type="submit" name="" value="SAVE">
+          <select id="select-folder-options"></select>
+          <input id="save-btn" type="submit" value="SAVE">
         </form>
       </div>
-
     </div>
-  </body>
+  </div>
+</body>
 </html>
