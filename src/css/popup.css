@@ -3,15 +3,19 @@
 },
 #title-container {
 },
-#form-container {
+#textarea-container {
 },
 #save-btn {
 },
-#folder-container {
+#user-folder-container {
 },
-#tabs-list {
+#user-folders {
 },
-#notes-list {
+#notes-container {
+},
+#folder-options{
+},
+#folder-notes-list {
 },
 #save-container {
 }

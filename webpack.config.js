@@ -23,7 +23,11 @@ var options = {
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
-    background: path.join(__dirname, "src", "js", "background.js")
+    background: path.join(__dirname, "src", "js", "background.js"),
+    notes: "./src/js/popup/notes.js"
+  },
+  chromeExtensionBoilerplate: {
+    notHotReload: ["notes"]
   },
   output: {
     path: path.join(__dirname, "build"),

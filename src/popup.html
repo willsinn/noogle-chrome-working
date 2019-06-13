@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+
 <html>
   <head>
-    <link rel="stylesheet" href="./css/popup.css" type="MIME" media="screen" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="screen" charset="utf-8">
   </head>
   <body>
     <div id="popup-container">
@@ -8,24 +10,25 @@
         <h1 class="title">
           Noogle
         </h1>
+        <h2 id="name"></h2>
       </div>
-      <div id="form-container">
-        <form class="form">
+      <div id="textarea-container">
           <textarea name="" rows="8" cols="80" value=""></textarea>
-          <input type="text" name="folders" value="">
-          <input id="save-btn" type="submit" name="" value="SAVE">
-        </form>
       </div>
-      <div id="folder-container">
-          <ul id="tabs-list">
-          </ul>
-        <div id="notes-container">
-          <ul id="notes-list">
-          </ul>
-        </div>
+
+      <div id="user-folder-container">
+          <ul id="user-folders"></ul>
+          <div id="notes-container">
+            <ul id="folder-notes-list"></ul>
+          </div>
       </div>
 
       <div id="save-container">
+        <form id="add-note-form">
+          <select id="folder-options">
+          </select>
+          <input id="save-btn" type="submit" name="" value="SAVE">
+        </form>
       </div>
 
     </div>
