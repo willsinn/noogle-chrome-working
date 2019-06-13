@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", event => {
   const open = event.target.webkitVisibilityState
   if (open === "visible") {
     renderNotes();
-  } else {
-    return
-    console.log("add fetch data, into conditional here")
+
   }
+  console.log("add fetch data, into conditional here")
 })
+
+// chrome.app.window.current().onClosed.addListener(event => {console.log()})
