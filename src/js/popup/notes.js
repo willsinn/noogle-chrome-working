@@ -41,7 +41,7 @@ export default function(){
     //append first folder's notes into space to start
     const startNotes = user.folders[0].notes
     startNotes.forEach(note => {
-      folderNotesList.innerHTML=`
+      folderNotesList.innerHTML+=`
         <td id="folder-note-${note.id}">
           <span>${note.note}</span>
           <span>${note.url}</span>
