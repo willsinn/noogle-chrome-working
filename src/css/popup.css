@@ -12,9 +12,9 @@ tr {
     background-image: url(../img/background.jpg);
 
 }
-/* .notes-list-item {
-  height: 30px;
-} */
+.notes-list-item {
+background-color: #fff59d
+}
 #popup-container {
 }
 #title-container {
@@ -94,4 +94,11 @@ tr {
     border: 2px solid transparent;
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
+}
+.table td {
+    padding: .65rem;
+    vertical-align: top;
+  }
+.table-bordered td {
+  border: 3px solid #dee2e6;
 }
