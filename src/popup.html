@@ -1,25 +1,54 @@
-<!DOCTYPE html>
-
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css/html" href="./css/popup.css" media="screen" charset="utf-8">
   </head>
 <body>
   <div id="root">
     <div id="title-container">
-      <h1 class="title">
-        Noogle
-      </h1>
-      <h2 id="name"></h2>
+      <div id="title-wrapper">
+        <h1 class="title">
+          Noogle
+        </h1>
+        <h2 id="name"></h2>
+      </div>
+      <div id="login-wrapper">
+        <button>Login</button>
+      </div>
     </div>
     <div id="popup-container">
       <div id="textarea-container">
-        <textarea rows="8" cols="80"></textarea>
+        <textarea rows="3" cols="60"></textarea>
       </div>
       <div id="user-folder-container">
-        <ul id="user-folders"></ul>
+        <div id="tabs-wrapper">
+          <ul class="nav nav-tabs nav-justified" id="user-folders">
+          </ul>
+          <ul class="nav nav-tabs nav-justified" id="new-folder-container">
+            <li =class="nav-item">
+            <form id="add-folder-form">
+              <input type="text" name="folder" value="">
+              <input type="submit" value="NEW">
+            </form>
+          </li>
+          </ul>
+        </div>
         <div id="notes-container">
-          <ul id="folder-notes-list"></ul>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  
+                </tr>
+              </thead>
+              <tbody id="folder-notes-list">
+                <tr class="notes-list-item"></tr>
+                <tr class="notes-list-item"></tr>
+                <tr class="notes-list-item"></tr>
+                <tr class="notes-list-item"></tr>
+                <tr class="notes-list-item"></tr>
+              </tbody>
+          </table>
+
         </div>
       </div>
       <div id="save-container">

@@ -1,15 +1,60 @@
 /* Basic Style */
+tr {
+  width: 80%;
+}
+a.nav-link.active {
+ color: blue;
+}
+nav-item {
+  margin: auto;
+}
+#root{
+    border: 2px ridge red;
+    border-radius: 4px;
+    height: inherit;
+    width: inherit;
+    padding: 10px;
+}
+.node-list-item {
+  height: 30px;
+}
 #popup-container {
 }
 #title-container {
+  display: flex;
+  justify-content: space-between;
 }
+#login-wrapper {
+  align-self: center;
+  padding-right: 35px;
+  padding-top: 20px;
+}
+#login-wrapper button{
+  background-color: #003366;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+#login-wrapper button:hover {background-color: #88AAFF}
+
 #textarea-container {
 }
 #save-btn {
 }
 #user-folder-container {
+
 }
 #user-folders {
+  list-style-type: none;
 }
 #notes-container {
 }
@@ -17,5 +62,16 @@
 }
 #folder-notes-list {
 }
+#tabs-wrapper {
+  display: flex;
+  margin: 0 auto;
+}
+#new-folder-container{
+
+}
 #save-container {
+}
+#add-folder-form {
+  display: flex;
+  flex-direction: column
 }

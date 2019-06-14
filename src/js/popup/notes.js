@@ -15,7 +15,9 @@ const saveContainer = grab("#save-container")
 const selectFolderOptions = grab("#select-folder-options")
 const addNoteForm = grab("#add-note-form")
 const textareaContainer = grab("#textarea-container")
-
+const tabsWrapper = grab("#tabs-wrapper")
+const allFiveNotes = document.querySelectorAll("#folder-notes-list .notes-list-item")
+console.log(allFiveNotes);
 
 
 export default function(){
@@ -26,8 +28,8 @@ export default function(){
     name.innerHTML+=`${user.name}`
     user.folders.forEach(folder => {
       userFolders.innerHTML+=`
-        <li id="folder-tab-${folder.id}">
-          <div>${folder.name}</div>
+        <li class="nav-item" id="folder-tab-${folder.id}">
+          <a class="nav-link active">${folder.name}</a>
         </li>`
       selectFolderOptions.innerHTML+=`
         <option value="option-${folder.id}">
@@ -40,10 +42,11 @@ export default function(){
     const startNotes = user.folders[0].notes
     startNotes.forEach(note => {
       folderNotesList.innerHTML=`
-        <li id="folder-note-${note.id}">
+        <td id="folder-note-${note.id}">
           <span>${note.note}</span>
           <span>${note.url}</span>
-        </li>`
+        </td>
+      `
       })
 
 //toggles notes by tab clicked
@@ -53,10 +56,10 @@ export default function(){
       let targetIdx = parseInt(targetId)-1
       user.folders[targetIdx].notes.forEach(note => {
         folderNotesList.innerHTML=`
-          <li id="folder-note-${note.id}">
+          <td id="folder-note-${note.id}">
             <span>${note.note}</span>
             <span>${note.url}</span>
-          </li>
+          </td>
           `
       })
     })
@@ -68,16 +71,18 @@ export default function(){
     let inputFolder = event.target.firstElementChild.value.split("-")[1]
     let folderId = parseInt(inputFolder)
 
-    
     fetch(notesURL, {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({
+
+      })
     })
     addNoteForm.reset()
   })
   //on tabClick switch notes
+
 }
