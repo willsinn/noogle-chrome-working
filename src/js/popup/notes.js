@@ -16,8 +16,6 @@ const selectFolderOptions = grab("#select-folder-options")
 const addNoteForm = grab("#add-note-form")
 const textareaContainer = grab("#textarea-container")
 const tabsWrapper = grab("#tabs-wrapper")
-const allFiveNotes = document.querySelectorAll("#folder-notes-list .notes-list-item")
-console.log(allFiveNotes);
 
 
 export default function(){
@@ -40,12 +38,15 @@ export default function(){
 
     //append first folder's notes into space to start
     const startNotes = user.folders[0].notes
+    folderNotesList.innerHTML="";
     startNotes.forEach(note => {
       folderNotesList.innerHTML+=`
+      <tr class="notes-list-item">
         <td id="folder-note-${note.id}">
           <span>${note.note}</span>
           <span>${note.url}</span>
         </td>
+      </tr>
       `
       })
 
@@ -54,13 +55,16 @@ export default function(){
       let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
       let targetIdx = parseInt(targetId)-1
+      folderNotesList.innerHTML="";
       user.folders[targetIdx].notes.forEach(note => {
-        folderNotesList.innerHTML=`
-          <td id="folder-note-${note.id}">
+        folderNotesList.innerHTML+=`
+        <tr class="notes-list-item">
+          <td class="notes-list-item" id="folder-note-${note.id}">
             <span>${note.note}</span>
             <span>${note.url}</span>
           </td>
-          `
+        </tr>
+        `
       })
     })
   })
