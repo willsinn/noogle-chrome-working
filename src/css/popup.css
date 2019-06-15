@@ -1,15 +1,60 @@
 /* Basic Style */
+tr {
+  width: 80%;
+}
+
+#root{
+    border: 2.5px ridge #dee2e6;
+    border-radius: 2px;
+    height: inherit;
+    width: inherit;
+    padding: 15px;
+    background-image: url(../img/background.jpg);
+
+}
+.notes-list-item {
+background-color: #fff59d
+}
 #popup-container {
 }
 #title-container {
+  display: flex;
+  justify-content: space-between;
 }
-#textarea-container {
+#login-wrapper {
+  align-self: center;
+  padding-right: 35px;
+  padding-top: 20px;
+}
+#login-wrapper button{
+  background-color: #003366;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+#login-wrapper button:hover {background-color: #88AAFF}
+
+#textarea-container textarea{
+  background: #fff59d;
+  border: 2.5px ridge #dee2e6;
+
 }
 #save-btn {
 }
 #user-folder-container {
+
 }
 #user-folders {
+  list-style-type: none;
 }
 #notes-container {
 }
@@ -17,5 +62,53 @@
 }
 #folder-notes-list {
 }
+#tabs-wrapper {
+  display: flex;
+  margin: auto 0;
+  padding-top: 15px;
+  padding-left: 8px;
+
+}
+#new-folder-container{
+
+}
 #save-container {
+}
+#add-folder-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+}
+.nav.nav-tabs.nav-justified {
+  margin: auto 0;
+}
+#add-folder-form {
+  margin: auto 0;
+}
+.nav-item {
+  margin: auto 0;
+}
+.nav-link.active {
+ background-color: blue;
+ margin: 0 auto;
+}
+.nav-item a {
+  height: 60px;
+}
+.nav-tabs .nav-link {
+    border: 2px solid transparent;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.table td {
+    padding: .65rem;
+    vertical-align: top;
+  }
+.table-bordered td {
+  border: 2.5px solid #dee2e6;
+}
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff176;
+    border: 2.5px ridge #dee2e6;
 }
