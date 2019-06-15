@@ -10,7 +10,6 @@ const name = grab("#name")
 const userFolderContainer = grab("#user-folder-container")
 const userFolders = grab("#user-folders")
 const folderNotesList = grab("#folder-notes-list")
-const notesListArray = document.querySelectorAll("#folder-notes-list .notes-list-item")
 
 const saveContainer = grab("#save-container")
 const selectFolderOptions = grab("#select-folder-options")
@@ -20,6 +19,8 @@ const tabsWrapper = grab("#tabs-wrapper")
 
 
 
+//helper that changes display notes
+const notesListArray = document.querySelectorAll("#folder-notes-list .notes-list-item")
 const changeDisplayNotes = (targetNotes) => {
   notesListArray.forEach((noteTr, index) => {
     noteTr.children[0].innerHTML=""
@@ -28,9 +29,6 @@ const changeDisplayNotes = (targetNotes) => {
         noteTr.children[0].innerHTML+=`<span id="note-${note.id}">${note.note}</span>`
       }
     })
-    if (note === undefined) {
-
-    }
   })
 }
 
@@ -61,17 +59,32 @@ export default function(){
       let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
       let targetIdx = parseInt(targetId)-1
-      let targetFolder = user.folders[targetIdx].notes
-      changeDisplayNotes(targetFolder)
+      let targetFolderNotes = user.folders[targetIdx].notes
+      changeDisplayNotes(targetFolderNotes)
+      let selected = [...user.folders].splice(targetIdx, 1)
+      user.folders.forEach(folder => {
+        if(folder !== selected[0]) {
+          selected.push(folder)
+        }
+      })
+      userFolders.innerHTML=""
+      selected.forEach(folder => {
+        userFolders.innerHTML+=`
+          <li class="nav-item" id="folder-tab-${folder.id}">
+            <a class="nav-link active">${folder.name}</a>
+          </li>`
+        })
+      // rearrange.unshift(user.folders[targetIdx])
+      const rearrangeFolders = () => {
 
+      }
     })
   })
 
   saveContainer.addEventListener("submit", e => {
     e.preventDefault();
-    let input = event.target.parentNode.parentElement.firstElementChild.childNodes[1]
-    let inputFolder = event.target.firstElementChild.value.split("-")[1]
-    let folderId = parseInt(inputFolder)
+    const input = event.target.parentNode.parentElement.firstElementChild.childNodes[1]
+    const folderId = parseInt(event.target.firstElementChild.value.split("-")[1])
 
     fetch(notesURL, {
       method: "POST",
