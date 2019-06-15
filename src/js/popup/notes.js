@@ -10,6 +10,7 @@ const name = grab("#name")
 const userFolderContainer = grab("#user-folder-container")
 const userFolders = grab("#user-folders")
 const folderNotesList = grab("#folder-notes-list")
+const notesListArray = document.querySelectorAll("#folder-notes-list .notes-list-item")
 
 const saveContainer = grab("#save-container")
 const selectFolderOptions = grab("#select-folder-options")
@@ -38,17 +39,24 @@ export default function(){
 
     //append first folder's notes into space to start
     const startNotes = user.folders[0].notes
-    folderNotesList.innerHTML="";
-    startNotes.forEach(note => {
-      folderNotesList.innerHTML+=`
-      <tr class="notes-list-item">
-        <td id="folder-note-${note.id}">
-          <span>${note.note}</span>
-          <span>${note.url}</span>
-        </td>
-      </tr>
-      `
+    notesListArray.forEach((noteTr, index) => {
+      const note = startNotes.map((note, idx) => {
+        if (index === idx){
+          noteTr.children[0].innerHTML+=`<span id="note-${note.id}">${note.note}</span>`
+        }
       })
+    })
+    // folderNotesList.innerHTML="";
+    // startNotes.forEach(note => {
+    //   folderNotesList.innerHTML+=`
+    //   <tr class="notes-list-item">
+    //     <td id="folder-note-${note.id}">
+    //       <span>${note.note}</span>
+    //       <span>${note.url}</span>
+    //     </td>
+    //   </tr>
+    //   `
+    //   })
 
 //toggles notes by tab clicked
     userFolders.addEventListener('click', e => {
@@ -59,7 +67,7 @@ export default function(){
       user.folders[targetIdx].notes.forEach(note => {
         folderNotesList.innerHTML+=`
         <tr class="notes-list-item">
-          <td class="notes-list-item" id="folder-note-${note.id}">
+          <td>
             <span>${note.note}</span>
             <span>${note.url}</span>
           </td>
