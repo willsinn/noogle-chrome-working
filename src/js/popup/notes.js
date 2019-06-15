@@ -19,6 +19,21 @@ const textareaContainer = grab("#textarea-container")
 const tabsWrapper = grab("#tabs-wrapper")
 
 
+
+const changeDisplayNotes = (targetNotes) => {
+  notesListArray.forEach((noteTr, index) => {
+    noteTr.children[0].innerHTML=""
+    const note = targetNotes.map((note, idx) => {
+      if (index === idx){
+        noteTr.children[0].innerHTML+=`<span id="note-${note.id}">${note.note}</span>`
+      }
+    })
+    if (note === undefined) {
+
+    }
+  })
+}
+
 export default function(){
   fetch(usersURL+`${userId}`)
   .then(r => r.json())
@@ -39,41 +54,16 @@ export default function(){
 
     //append first folder's notes into space to start
     const startNotes = user.folders[0].notes
-    notesListArray.forEach((noteTr, index) => {
-      const note = startNotes.map((note, idx) => {
-        if (index === idx){
-          noteTr.children[0].innerHTML+=`<span id="note-${note.id}">${note.note}</span>`
-        }
-      })
-    })
-    // folderNotesList.innerHTML="";
-    // startNotes.forEach(note => {
-    //   folderNotesList.innerHTML+=`
-    //   <tr class="notes-list-item">
-    //     <td id="folder-note-${note.id}">
-    //       <span>${note.note}</span>
-    //       <span>${note.url}</span>
-    //     </td>
-    //   </tr>
-    //   `
-    //   })
+    changeDisplayNotes(startNotes)
 
 //toggles notes by tab clicked
     userFolders.addEventListener('click', e => {
       let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
       let targetIdx = parseInt(targetId)-1
-      folderNotesList.innerHTML="";
-      user.folders[targetIdx].notes.forEach(note => {
-        folderNotesList.innerHTML+=`
-        <tr class="notes-list-item">
-          <td>
-            <span>${note.note}</span>
-            <span>${note.url}</span>
-          </td>
-        </tr>
-        `
-      })
+      let targetFolder = user.folders[targetIdx].notes
+      changeDisplayNotes(targetFolder)
+
     })
   })
 
