@@ -8,10 +8,12 @@ const folderNotesList = grab("#folder-notes-list")
 renderNotes()
 
 document.addEventListener("DOMContentLoaded", event => {
+
   console.log('%c <-- popup.js --> ', 'background: #222; color: green', event);
   const isOpen = event.target.webkitVisibilityState
   if (isOpen === "visible") {
     options()
+
   }
 
 
