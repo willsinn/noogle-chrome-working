@@ -1,8 +1,7 @@
 const grab = (selectorStr, parent = document) =>  parent.querySelector(selectorStr)
-const usersURL=`http://localhost:3000/users/`;
-const notesURL="http://localhost:3000/notes";
-
 const userId = 1;
+const usersURL=`http://localhost:3000/users/${userId}`;
+const notesURL="http://localhost:3000/notes";
 
 
 const name = grab("#name")
@@ -33,7 +32,7 @@ const changeDisplayNotes = (targetNotes) => {
 }
 
 export default function(){
-  fetch(usersURL+`${userId}`)
+  fetch(usersURL)
   .then(r => r.json())
   .then(user => {
     // console.log('%c <-**user-fetch**-> ', 'background: #222; color: blue', user)
