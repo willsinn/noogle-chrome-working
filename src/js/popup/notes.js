@@ -1,7 +1,8 @@
 const grab = (selectorStr, parent = document) =>  parent.querySelector(selectorStr)
-const userId = 1;
-const usersURL=`http://localhost:3000/users/${userId}`;
+const usersURL=`http://localhost:3000/users/`;
 const notesURL="http://localhost:3000/notes";
+
+const userId = 1;
 
 
 const name = grab("#name")
@@ -31,21 +32,32 @@ const changeDisplayNotes = (targetNotes) => {
   })
 }
 
+//helper for string limits
+const truncateString = (string, maxVal) => {
+  return string.substring(0, maxVal)
+}
+
+
+
+//re-append folder-tabs to DOM
+
 export default function(){
-  fetch(usersURL)
+  fetch(usersURL+`${userId}`)
   .then(r => r.json())
   .then(user => {
     // console.log('%c <-**user-fetch**-> ', 'background: #222; color: blue', user)
     name.innerHTML+=`${user.name}`
     user.folders.forEach(folder => {
+    let tabName = truncateString(folder.name, 10)
       userFolders.innerHTML+=`
         <li class="nav-item" id="folder-tab-${folder.id}">
-          <a class="nav-link active">${folder.name}</a>
+          <a class="nav-link active">${tabName}</a>
         </li>`
       selectFolderOptions.innerHTML+=`
         <option value="option-${folder.id}">
-          ${folder.name}
+          ${tabName}
         </option>`
+
       })
     //append tabs
 
@@ -55,28 +67,27 @@ export default function(){
 
 //toggles notes by tab clicked
     userFolders.addEventListener('click', e => {
+
       let targetId = e.target.parentElement.id
       targetId = targetId.substring(targetId.length - 1)
       let targetIdx = parseInt(targetId)-1
       let targetFolderNotes = user.folders[targetIdx].notes
-      changeDisplayNotes(targetFolderNotes)
-      let selected = [...user.folders].splice(targetIdx, 1)
-      user.folders.forEach(folder => {
-        if(folder !== selected[0]) {
-          selected.push(folder)
-        }
-      })
-      userFolders.innerHTML=""
-      selected.forEach(folder => {
-        userFolders.innerHTML+=`
-          <li class="nav-item" id="folder-tab-${folder.id}">
-            <a class="nav-link active">${folder.name}</a>
-          </li>`
-        })
-      // rearrange.unshift(user.folders[targetIdx])
-      const rearrangeFolders = () => {
 
-      }
+      changeDisplayNotes(targetFolderNotes)
+
+      userFolders.innerHTML="";
+      user.folders.forEach(folder => {
+      let tabName = truncateString(folder.name, 10)
+      userFolders.innerHTML+=`
+          <li class="nav-item" id="folder-tab-${folder.id}">
+            <a class="nav-link active">${tabName}</a>
+          </li>`
+      })
+      let selected = [...user.folders].splice(targetIdx, 1)
+      const selectedTab = userFolders.querySelector(`#folder-tab-${selected[0].id}`)
+      let selectedName = truncateString(selected[0].name, 10)
+      selectedTab.innerHTML=`<a>${selectedName}</a>`
+
     })
   })
 
