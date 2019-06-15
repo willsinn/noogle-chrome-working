@@ -51,7 +51,7 @@ export default function(){
     let tabName = truncateString(folder.name, 10)
       userFolders.innerHTML+=`
         <li class="nav-item" id="folder-tab-${folder.id}">
-          <a class="nav-link active">${tabName}</a>
+          <a class="nav-link">${tabName}</a>
         </li>`
       selectFolderOptions.innerHTML+=`
         <option value="option-${folder.id}">
@@ -80,13 +80,14 @@ export default function(){
       let tabName = truncateString(folder.name, 10)
       userFolders.innerHTML+=`
           <li class="nav-item" id="folder-tab-${folder.id}">
-            <a class="nav-link active">${tabName}</a>
+            <a class="nav-link">${tabName}</a>
           </li>`
       })
       let selected = [...user.folders].splice(targetIdx, 1)
       const selectedTab = userFolders.querySelector(`#folder-tab-${selected[0].id}`)
       let selectedName = truncateString(selected[0].name, 10)
-      selectedTab.innerHTML=`<a>${selectedName}</a>`
+      selectedTab.innerHTML="";
+      selectedTab.innerHTML+=`<a id="toggle-selected-tab">${selectedName}</a>`
 
     })
   })

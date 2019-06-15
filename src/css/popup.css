@@ -113,6 +113,6 @@ background-color: #fff59d
     border: 2.5px ridge #dee2e6;
 }
 
-.nav-item-selected-tab {
+#toggle-selected-tab {
   background-color:blue;
 }
