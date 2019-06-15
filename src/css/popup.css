@@ -103,6 +103,8 @@ background-color: #fff59d
 .table td {
     padding: .65rem;
     vertical-align: top;
+    display:flex;
+    justify-content: space-between;
   }
 .table-bordered td {
   border: 2.5px solid #dee2e6;

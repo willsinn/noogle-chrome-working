@@ -25,8 +25,11 @@ const changeDisplayNotes = (targetNotes) => {
   notesListArray.forEach((noteTr, index) => {
     noteTr.children[0].innerHTML=""
     const note = targetNotes.map((note, idx) => {
+      const displayNote = truncateString(note.note, 50)
       if (index === idx){
-        noteTr.children[0].innerHTML+=`<span id="note-${note.id}">${note.note}</span>`
+        noteTr.children[0].innerHTML+=`<span>${displayNote}...</span>
+        <button id="note-${note.id}">view</button>
+        `
       }
     })
   })
