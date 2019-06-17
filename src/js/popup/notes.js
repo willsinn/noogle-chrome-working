@@ -26,9 +26,10 @@ const changeDisplayNotes = (targetNotes) => {
     noteTr.children[0].innerHTML=""
     const note = targetNotes.map((note, idx) => {
       const displayNote = truncateString(note.note, 50)
+
       if (index === idx){
-        noteTr.children[0].innerHTML+=`<span>${displayNote}...</span>
-        <button id="note-${note.id}">view</button>
+        noteTr.children[0].innerHTML+=`<span style="display:inline-block;">${(displayNote.endsWith(".")?(displayNote):(displayNote+'...'))}</span>
+        <button id="note-${note.id}" style="background:inherit; border: none;">🔎</button>
         `
       }
     })

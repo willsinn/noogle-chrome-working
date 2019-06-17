@@ -5,14 +5,14 @@ const grab = (selectorStr, parent = document) =>  parent.querySelector(selectorS
 const folderNotesList = grab("#folder-notes-list")
 
 
-renderNotes()
 
 document.addEventListener("DOMContentLoaded", event => {
+  renderNotes()
 
   console.log('%c <-- popup.js --> ', 'background: #222; color: green', event);
   const isOpen = event.target.webkitVisibilityState
   if (isOpen === "visible") {
-    options()
+    // options()
 
   }
 
