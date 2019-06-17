@@ -1,20 +1,23 @@
 /* Basic Style */
-body{
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
 
 }
 #root{
-    height: 100%;
-    width: 100%;
-    padding: 15px;
-    background-image: url(../img/background.jpg);
-    background-size: 100%;
     border: 2px ridge #dee2e6;
     border-radius: 14px;
+    height: inherit;
+    width: inherit;
+    padding: 15px;
 }
 
 #popup-container {
-  opacity: .92;
 }
 #title-container {
   display: flex;
